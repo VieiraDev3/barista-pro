@@ -10,7 +10,7 @@ import * as Haptics from 'expo-haptics';
 import { ScreenContainer } from '@/components/screen-container';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { useColors } from '@/hooks/use-colors';
-import { BREWING_METHODS, BrewingMethod, GRIND_SIZES, GrindSize } from '@/constants/brewingMethods';
+import { BREWING_METHODS, BrewingMethod, GRIND_SIZES, GrindSizeType } from '@/constants/brewingMethods';
 import { BrewHistoryEntry, SensorialNotes, FLAVOR_NOTES } from '@/constants/types';
 import { saveBrewEntry, setLastMethod, getSettings } from '@/lib/storage';
 
@@ -24,7 +24,7 @@ export default function BrewScreen() {
   const [selectedMethod, setSelectedMethod] = useState<BrewingMethod | null>(null);
   const [volume, setVolume] = useState('300');
   const [ratio, setRatio] = useState('15');
-  const [grindSize, setGrindSize] = useState<GrindSize>('medium-fine');
+  const [grindSize, setGrindSize] = useState<GrindSizeType>('medium-fine');
   const [ttsEnabled, setTtsEnabled] = useState(true);
 
   // Timer state

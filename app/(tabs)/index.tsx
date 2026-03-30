@@ -289,14 +289,14 @@ export default function HomeScreen() {
           </Pressable>
         )}
 
-        {/* Tip of the Day */}
+        {/* Dica do Dia */}
         <Text style={styles.sectionTitle}>Dica do Dia</Text>
         <View style={styles.tipCard}>
           <Text style={styles.tipCategory}>💡 {tip.category}</Text>
           <Text style={styles.tipText}>{tip.tip}</Text>
         </View>
 
-        {/* Recent Brews */}
+        {/* Preparos Recentes */}
         <Text style={styles.sectionTitle}>Preparos Recentes</Text>
         {recentBrews.length > 0 ? (
           <ScrollView
@@ -325,7 +325,7 @@ export default function HomeScreen() {
           </View>
         )}
 
-        {/* Featured Method */}
+        {/* Método em Destaque */}
         <Text style={styles.sectionTitle}>Método em Destaque</Text>
         <Pressable
           style={({ pressed }) => [styles.featuredCard, pressed && { opacity: 0.8 }]}
@@ -340,7 +340,7 @@ export default function HomeScreen() {
           <IconSymbol name="chevron.right" size={20} color={colors.muted} />
         </Pressable>
 
-        {/* Browse Methods */}
+        {/* Métodos de Preparo */}
         <Text style={styles.sectionTitle}>Métodos de Preparo</Text>
         <View style={styles.methodGrid}>
           {BREWING_METHODS.map(method => (

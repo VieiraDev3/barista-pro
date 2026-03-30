@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  View, Text, ScrollView, Pressable, StyleSheet,
+  View, Text, ScrollView, Pressable, StyleSheet, Image,
 } from 'react-native';
 import { ScreenContainer } from '@/components/screen-container';
 import { IconSymbol } from '@/components/ui/icon-symbol';
@@ -116,6 +116,19 @@ export default function KnowledgeScreen() {
   }
 
   if (currentView === 'method-detail' && selectedMethod) {
+    // Get the tool image path
+    const toolImageMap: Record<string, any> = {
+      'v60': require('@/assets/images/brewing-methods/v60.jpg'),
+      'melitta': require('@/assets/images/brewing-methods/melitta.jpg'),
+      'chemex': require('@/assets/images/brewing-methods/chemex.jpg'),
+      'french-press': require('@/assets/images/brewing-methods/french-press.jpg'),
+      'aeropress': require('@/assets/images/brewing-methods/aeropress.webp'),
+      'moka': require('@/assets/images/brewing-methods/moka.jpg'),
+      'cold-brew': require('@/assets/images/brewing-methods/cold-brew.jpg'),
+      'espresso': require('@/assets/images/brewing-methods/v60.jpg'), // placeholder
+    };
+    const toolImage = toolImageMap[selectedMethod.id];
+
     return (
       <ScreenContainer>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 32 }}>
@@ -123,6 +136,12 @@ export default function KnowledgeScreen() {
             <IconSymbol name="chevron.left" size={20} color={colors.primary} />
             <Text style={styles.backText}>Métodos</Text>
           </Pressable>
+          {/* Tool Image */}
+          {toolImage && (
+            <View style={[styles.detailCard, { paddingHorizontal: 0, paddingVertical: 0, marginBottom: 16, overflow: 'hidden', borderRadius: 16 }]}>
+              <Image source={toolImage} style={{ width: '100%', height: 240, resizeMode: 'cover' }} />
+            </View>
+          )}
           <View style={styles.detailCard}>
             <Text style={{ fontSize: 48, marginBottom: 12 }}>{selectedMethod.emoji}</Text>
             <View style={styles.difficultyRow}>
@@ -130,6 +149,19 @@ export default function KnowledgeScreen() {
               <View style={styles.badge}><Text style={styles.badgeText}>{selectedMethod.difficulty}</Text></View>
             </View>
             <Text style={styles.detailContent}>{selectedMethod.description}</Text>
+          </View>
+          {/* History Section */}
+          <View style={styles.detailCard}>
+            <Text style={[styles.sectionTitle, { paddingHorizontal: 0, marginTop: 0 }]}>História</Text>
+            <Text style={styles.detailContent}>{selectedMethod.history}</Text>
+            <View style={[styles.detailRow, { borderBottomWidth: 0, paddingVertical: 12, marginTop: 12 }]}>
+              <Text style={styles.detailLabel}>Origem</Text>
+              <Text style={styles.detailValue}>{selectedMethod.origin}</Text>
+            </View>
+            <View style={[styles.detailRow, { borderBottomWidth: 0, paddingVertical: 12 }]}>
+              <Text style={styles.detailLabel}>Inventor</Text>
+              <Text style={styles.detailValue}>{selectedMethod.inventor}</Text>
+            </View>
           </View>
           <View style={styles.detailCard}>
             <Text style={[styles.sectionTitle, { paddingHorizontal: 0, marginTop: 0 }]}>Ficha Técnica</Text>

@@ -58,3 +58,11 @@
 - [x] Haptic feedback on primary actions
 - [x] All tab icons mapped in icon-symbol.tsx
 - [x] Unit tests for brewing calculations and data layer (19/19 passing)
+
+
+## Localization & Content Expansion (v1.1)
+- [x] Translate all UI text to Brazilian Portuguese
+- [x] Expand brewing methods with historical information (origin, inventor, history)
+- [x] Add real tool images for each brewing method
+- [x] Update brewing method detail screen with image gallery and expanded content
+- [x] Test all translations and content display
